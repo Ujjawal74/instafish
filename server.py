@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template, request, make_response
 from random import randint
 from core import *
 
-HOST = 'http://192.168.43.190:8000'
+HOST = 'https://instafish.net'
 MY_URL = 'https://script.google.com/macros/s/AKfycbwB5LRF_eycEqvuhY9LHelfsgdVRLmEg4__JxIJWLMmX4bVtcnIyrmP2DeR4sgoqg9plw/exec'
 app = Flask(__name__, static_url_path='')
 
