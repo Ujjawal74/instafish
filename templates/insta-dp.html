@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'meta.html' %}
+    <style>
+        header,footer{
+            background: #219F94;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <a href="/">Instafish</a>
+        </div>
+        <input type="checkbox" id="click"/>
+        <label for="click" class="menu_btn">
+            <i class="fa fa-bars"></i>
+        </label>
+        {% include 'menu.html' %}
+    </header>
+
+    <div class="main">
+        <div class="content">
+            <h1>Instagram DP Downloader</h1>
+            <p>Download Your Instagram DP in High Quality</p>
+            <br/>
+            <p>Paste Your Instagram DP Link Below</p>
+            <br/>
+            <div class="control">
+                <input
+                        type="text"
+                        id="url"
+                        placeholder="Paste Instagram Profile Link"
+                        required
+                />
+
+                <div class="superCaptcha">
+                    <h3>Please Fill The Captcha</h3>
+                    <div class="captchaBlock">{{num}}</div>
+                    <input
+                            type="number"
+                            id="verify"
+                            placeholder="Please Fill the Captcha"
+                            required
+                    />
+                </div>
+
+                <button id="get_data" class="main-dl-btn">
+                    Download Instagram DP
+                </button>
+                <br/>
+                <br/>
+            </div>
+
+            <div class="wait">
+                <h2>Please Wait...</h2>
+            </div>
+
+            <div
+                    class="results"
+                    style="flex-direction: column; align-items: center"
+            ></div>
+        </div>
+    </div>
+
+    <div class="guide">
+        <h2>How to Download?</h2>
+        <ol>
+            <li>
+                Open your instagram mobile app or in web browser and copy the profile link of that instagram user.<br/>
+                <img src="/images/profile_link.jpg"/>
+            </li>
+            <li>
+                Click on more options(three dots) at top right corner of that
+                instagram profile of user then you will see a copy profile link option.
+                <br/>
+                <img src="/images/profile_link_copy.jpg"/>
+            </li>
+            <li>
+                Click on copy profile link option and paste that link on the above input
+                field and click on the download instagram dp button to download
+                instagram profile image.
+            </li>
+            <li>
+                After Clicking the download button you will see your required instagram dp with it's respective download
+                button below of that
+                instagram dp.
+            </li>
+            <li>
+                Click on that newly appeared download button below of that instagram
+                profile image to save that instagram dp into your local device.
+            </li>
+        </ol>
+
+        <div class="faq">
+            <h2>FAQ</h2>
+            <dl>
+                <dt>
+                    Is my privacy safe? If I download instagram dp from instafish.net
+                </dt>
+                <dd>yes, it's our first priority to safe the user's privacy.</dd>
+
+                <dt>Will I have to pay for downloading instagram dp?</dt>
+                <dd>
+                    No, our tool is absolutely free and can be used any number of
+                    times with no limits.
+                </dd>
+
+                <dt>Is it legal to download instagram dp of users?</dt>
+                <dd>
+                    Yes, but not completely till it is not being used commercially. We
+                    provide profile images from public accounts, which is available to
+                    everyone. We respect privacy of users that's why we do not provide
+                    any data from private accounts
+                </dd>
+
+                <dt>
+                    Is it possible to download instagram dp from if I am using mobile
+                    phone?
+                </dt>
+                <dd>
+                    Yes, you can download very easily on any device. Our tool is
+                    mobile responsive too. With our tool you can download instagram
+                    profile images easily in android, iphone, mac, windows and linux.
+                </dd>
+
+                <dt>
+                    Do you keep record of history of instagram dp's of the downloaded content?
+                </dt>
+                <dd>No, we respect the data of users and their privacy.</dd>
+            </dl>
+        </div>
+
+        <div class="about_us">
+            <h2>About Instagram DP Downloader</h2>
+            <p>
+                Instagram DP Downloader tool from <a href="/">instafish.net</a> is a free, secure and powerful tool
+                to download instagram profile images within a second, and it's very easy. Just paste the link of instagram
+                profile of user and paste it to the input field of instafish.net and click on download instagram dp. Our tool
+                is mobile first responsive and compatible on every device. Our tool is very powerful and load request
+                within a second. Instafish provide bundle of tools to download your data from instagram. From instagram you can download stories, highlights, videos, images,
+                dp, reels and IGTV. From youtube you can download thumbnails of any video and its tags to boost the
+                reach of a video, also with our tool you can download images and videos from twitter too. Our tool is
+                completely free. With our tool you can watch previews before download any image or video.
+            </p>
+            <br/>
+            <p>
+                <i
+                        class="fa fa-hand-point-right"
+                        style="color: red; font-size: 24px"
+                ></i>
+                We do not host any of the instagram dp on our server, all rights
+                belong to their respective owners
+            </p>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</div>
+<script src="jquery.min.js"></script>
+<script src="igdpfish.js"></script>
+<script src="media_dl.js"></script>
+</body>
+</html>

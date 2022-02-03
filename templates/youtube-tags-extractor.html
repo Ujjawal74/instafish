@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'meta.html' %}
+    <style>
+        a {
+            text-decoration: none;
+        }
+        header,footer{
+            background: #FF7800;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <a href="/">Instafish</a>
+        </div>
+        <input type="checkbox" id="click"/>
+        <label for="click" class="menu_btn">
+            <i class="fa fa-bars"></i>
+        </label>
+        {% include 'menu.html' %}
+    </header>
+
+    <div class="main">
+        <div class="content">
+            <h1>Youtube Tags Extractor</h1>
+            <p>Youtube Video Tags Finder/Checker</p>
+            <br/>
+            <p>Paste Your Youtube Video Link Below</p>
+            <br/>
+            <div class="control">
+                <input
+                        type="text"
+                        id="url"
+                        placeholder="Paste Video Link"
+                        required
+                />
+
+                <div class="superCaptcha">
+                    <h3>Please Fill The Captcha</h3>
+                    <div class="captchaBlock">{{num}}</div>
+                    <input
+                            type="number"
+                            id="verify"
+                            placeholder="Please Fill the Captcha"
+                            required
+                    />
+                </div>
+
+                <button id="get_data" class="main-dl-btn">Extract Tags</button>
+                <br/>
+                <br/>
+            </div>
+
+            <div class="wait">
+                <h2>Please Wait...</h2>
+            </div>
+
+            <div
+                    class="results"
+                    style="
+              display: block;
+              font-size: 18px;
+              background: rgb(251, 245, 228);
+            "
+            ></div>
+
+            <div id="copy">
+                <textarea id="copy_tags" cols="80" rows="11"></textarea>
+                <button id="copy_btn" title="Copy">Copy YouTube Tags</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="guide">
+        <h2>How to Find YouTube Tags?</h2>
+        <ol>
+            <li>
+                Open your youtube mobile app or in web browser and copy the link of
+                that youtube video.<br/>
+                <img src="/images/youtube_link.jpg"/>
+                <br><br>
+                or you can find the link in this way on desktop
+                <br><br>
+                <img src="/images/yt_thumbnail_guide.jpg" alt="">
+            </li>
+            <li>
+                Click on the share button at top right side of like button of that
+                youtube video being played then you will see a copy link option.
+                <br/>
+                <img src="/images/youtube_link_copy.jpg"/>
+            </li>
+            <li>
+                Click on copy link option and paste that link on the above input
+                field and click on the copy youtube tags button to copy youtube tags.
+            </li>
+            <li>
+                After clicking the download button you will see your all your
+                required tags with its comma seperated version of tags which is available for copy.
+            </li>
+            <li>
+                Click on that copy button to copy in clipboard.
+            </li>
+        </ol>
+
+        <div class="faq">
+            <h2>FAQ</h2>
+            <dl>
+                <dt>What are YouTube Tags?</dt>
+                <dd>
+                    Youtube Tags are terms or keywords which are related to a that
+                    youtube video.
+                </dd>
+
+                <dt>Why we need youtube tags?</dt>
+                <dd>
+                    We need tags or keywords for our video to grow audience and to
+                    increase reach of the video.
+                </dd>
+
+                <dt>How we can find tags of a youtube video?</dt>
+                <dd>
+                    You can use our tool
+                    <a href="/youtube-tags-finder">youtube tags extractor</a>
+                    of <a href="/">instafish.net</a>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="about_us">
+            <h2>About YouTube Tags Finder</h2>
+            <p>
+                Youtube Tags Finder tool from <a href="/">instafish.net</a> is a free, secure and powerful tool
+                to extract youtube tags from youtube within a second, and it's very easy. Just paste the link of youtube
+                video and paste it to the input field of instafish.net and click on extract tags. Our tool
+                is mobile first responsive and compatible on every device. Our tool is very powerful and load request
+                within a second. Instafish provide bundle of tools to download your data from instagram. From instagram
+                you can download stories, highlights, videos, images, dp, reels and IGTV. From youtube you can download
+                thumbnails of any video and its tags to boost the
+                reach of a video, also with our tool you can download images and videos from twitter too. Our tool is
+                completely free. With our tool you can watch previews before download any image or video.
+            </p>
+            <br/>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</div>
+
+<script src="jquery.min.js"></script>
+<script src="ytagsfish.js"></script>
+
+<script>
+    $("#copy_btn").on('click', function () {
+        let tags = $("#copy_tags").select();
+        document.execCommand("copy");
+    });
+</script>
+</body>
+</html>

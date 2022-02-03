@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'meta.html' %}
+    <style>
+        header, footer {
+            background: #9C19E0;
+        }
+
+        @media only screen and (max-width: 576px) {
+            .content h1:nth-child(1) {
+                font-size: 22px;
+            }
+
+            .content p:first-of-type {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <a href="/">Instafish</a>
+        </div>
+        <input type="checkbox" id="click"/>
+        <label for="click" class="menu_btn">
+            <i class="fa fa-bars"></i>
+        </label>
+        {% include 'menu.html' %}
+    </header>
+
+    <div class="main">
+        <div class="content">
+            <h1>Youtube Thumbnail Downloader</h1>
+            <p>Download YouTube Thumbnail in Multiple Qualities</p>
+            <br/>
+            <p>Paste Your Youtube Video Link Below</p>
+            <br/>
+            <div class="control">
+                <input
+                        type="text"
+                        id="url"
+                        placeholder="Paste Video Link"
+                        required
+                />
+
+                <div class="superCaptcha">
+                    <h3>Please Fill The Captcha</h3>
+                    <div class="captchaBlock">{{num}}</div>
+                    <input
+                            type="number"
+                            id="verify"
+                            placeholder="Please Fill the Captcha"
+                            required
+                    />
+                </div>
+
+                <button id="get_data" class="main-dl-btn">
+                    Download YouTube Thumbnail
+                </button>
+                <br/>
+                <br/>
+            </div>
+
+            <div class="wait">
+                <h2>Please Wait...</h2>
+            </div>
+
+            <div class="results"></div>
+        </div>
+    </div>
+
+    <div class="guide">
+        <h2>How to Download?</h2>
+        <ol>
+            <li>
+                Open your youtube mobile app or in web browser and copy the link
+                of that thumbnail <br/>
+                <img src="/images/youtube_link.jpg"/> <br/><br>
+                or you can find the link in this way in desktop
+                <br><br>
+                <img src="/images/yt_thumbnail_guide.jpg"/>
+            </li>
+            <li>
+                Click on share button at right side of like button of that
+                youtube video then you will see a copy link option.
+                <br/>
+                <img src="/images/youtube_link_copy.jpg"/>
+            </li>
+            <li>
+                Click on copy link option and paste that link on the above input
+                field and click on the download youtube thumbnail button to download
+                youtube thumbnails.
+            </li>
+            <li>
+                After clicking the download button you will see your all your
+                required thumbnails with their respective download button below of that
+                thumbnail.
+            </li>
+            <li>
+                Click on that newly appeared download button below of that youtube
+                thumbnails to save that youtube thumbnails into your local device.
+            </li>
+        </ol>
+
+        <div class="faq">
+            <h2>FAQ</h2>
+            <dl>
+                <dt>
+                    Is my privacy safe? If I download youtube thumbnail from
+                    instafish.net
+                </dt>
+                <dd>yes, it's our first priority to safe our user's privacy</dd>
+
+                <dt>Will I have to pay for downloading youtube thumbnails?</dt>
+                <dd>
+                    No, our tool is absolutely free and can be used any number of
+                    times with no limits
+                </dd>
+
+                <dt>Is it legal to download youtube thumbnails of users?</dt>
+                <dd>
+                    Yes, but not completely till it is not being used commercially. We
+                    provide thumbnails from publicly available videos, which is available to
+                    everyone. We respect privacy of users that's why we do not provide
+                    any data from private accounts
+                </dd>
+
+                <dt>
+                    Is it possible to download youtube thumbnails from if I am using
+                    mobile phone?
+                </dt>
+                <dd>
+                    Yes, you can download very easily on any device. Our tool is
+                    mobile responsive too. With our tool you can download youtube
+                    thumbnails easily in android, iphone, mac, windows and linux.
+                </dd>
+
+                <dt>Do you keep record of history of thumbnails of the downloaded content?</dt>
+                <dd>No, we respect the data of users and their privacy.</dd>
+            </dl>
+        </div>
+
+        <div class="about_us">
+            <h2>About YouTube Thumbnail Downloader</h2>
+            <p>
+                Youtube Thumbnail Downloader tool from <a href="/">instafish.net</a> is a free, secure and powerful tool
+                to download youtube thumbnails within a second, and it's very easy. Just paste the link of youtube
+                video and paste it to the input field of instafish.net and click on download youtube thumbnail. Our tool
+                is mobile first responsive and compatible on every device. Our tool is very powerful and load request
+                within a second. Instafish provide bundle of tools to download your data from instagram. From instagram
+                you can download stories, highlights, videos, images, dp, reels and IGTV. From youtube you can download
+                thumbnails of any video and its tags to boost the
+                reach of a video, also with our tool you can download images and videos from twitter too. Our tool is
+                completely free. With our tool you can watch previews before download any image or video.
+            </p>
+            <br/>
+            <p>
+                <i
+                        class="fa fa-hand-point-right"
+                        style="color: red; font-size: 24px"
+                ></i>
+                We do not host any of the youtube thumbnails on our server, all
+                rights belong to their respective owners
+            </p>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</div>
+<script src="jquery.min.js"></script>
+<script src="ytfish.js"></script>
+<script src="media_dl.js"></script>
+</body>
+</html>

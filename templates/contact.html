@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'meta.html' %}
+    <style>
+        * {
+            font-style: italic;
+        }
+        h1 {
+            color: blueviolet;
+        }
+        .contact-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            align-items: center;
+        }
+        .contact-form input {
+            width: 50%;
+            padding: 20px;
+            margin: 5px 0;
+            border: none;
+            background: rgb(211, 255, 194);
+            font-size: 18px;
+        }
+        .contact-form button {
+            margin: 5px 0;
+            padding: 20px;
+            border: none;
+            background: blueviolet;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: rgb(38, 77, 250);
+        }
+
+        .contact-form input:focus {
+            outline: none;
+            background: none;
+            border-bottom: 3px solid rgb(250, 163, 23);
+        }
+        @media only screen and (max-width: 576px) {
+            .contact-form input {
+                width: 90%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <a href="/">Instafish</a>
+        </div>
+        <input type="checkbox" id="click"/>
+        <label for="click" class="menu_btn">
+            <i class="fa fa-bars"></i>
+        </label>
+        {% include 'menu.html' %}
+    </header>
+    <div class="main" style="min-height: 82vh; margin: 5px 0">
+        <h1>Contact Instafish</h1>
+        <p>We are happy to help you!</p>
+        <div class="contact-form">
+            <input type="text" id="user-name" placeholder="Your Name" required/>
+            <input type="text" id="user-email" placeholder="Your Email" required/>
+            <input type="text" id="user-query" placeholder="Your Query" required/>
+            <button id="contact-btn">Contact</button>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</div>
+<script src="jquery.min.js"></script>
+<script>
+    $('#contact-btn').on('click',function () {
+        const name = $('#user-name').val()
+        const email = $('#user-email').val()
+        const query = $('#user-query').val()
+
+        fetch('/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                query
+            })
+        }).then(data => data.json()).then(data => {
+            alert(data.msg)
+        })
+
+
+    })
+</script>
+</body>
+</html>
