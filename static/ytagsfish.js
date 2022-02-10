@@ -60,16 +60,15 @@ $(function () {
   let ticker;
 
   function runTicker() {
-    ticker = setInterval(checker, 1000);
+    ticker = setInterval(checker, 500);
   }
 
   function checker() {
-    console.log("Waiting...");
     let check = $(".results").html();
 
     if (check !== "") {
       clearInterval(ticker);
-      console.log("Waiting Over!");
+      is_result = false;
     }
 
     if (raw_html) {
@@ -100,8 +99,9 @@ $(function () {
     }
 
     if (c_num === s_num) {
+      $(".results").html("");
       $(".wait").css("display", "block");
-      $(".wait").append("<img src='image.gif' alt='wait' />");
+      $(".wait").html("<img src='image.gif' alt='wait' />");
       try {
         if (is_error) {
           $(".wait").css("display", "none");
@@ -109,6 +109,7 @@ $(function () {
           $(".results").html(
             `<h2 style="color:red;padding:5px;border-bottom:2px solid blue;font-style:italic;">${is_error}</h2>`
           );
+          is_error = false;
         }
       } catch {
         console.log("No Errors!");
@@ -116,12 +117,6 @@ $(function () {
 
       runTicker();
       $("#url").val("");
-
-      if (is_result) {
-        $(".wait").css("display", "none");
-        $(".results").css("display", "flex");
-        $("results").html(raw_html);
-      }
     } else {
       alert("Please Fill The Correct Captcha!");
     }
