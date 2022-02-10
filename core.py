@@ -211,7 +211,6 @@ def profile(url: str) -> dict:
             'error': 'No Media Found!'
         })
     else:
-
         tray = {
             'full_name': result['full_name'],
             'biography': result['biography'],
@@ -307,10 +306,13 @@ def tw_video(tw_user: str, tw_id: int) -> dict:
 
         except Exception as e:
             error_log(f'trying,{e},{tw_id}')
-            to_load = tw_media['data']['threaded_conversation_with_injections']['instructions'][0]['entries'][1][
-                'content']['items'][0]['item']['itemContent']['tweet_results']['result']
-            user = to_load['legacy']['in_reply_to_screen_name']
-
+            try:
+                to_load = tw_media['data']['threaded_conversation_with_injections']['instructions'][0]['entries'][1][
+                    'content']['items'][0]['item']['itemContent']['tweet_results']['result']
+                user = to_load['legacy']['in_reply_to_screen_name']
+            except Exception as e:
+                error_log(f'trying,{e},{tw_id}')
+                user = results['core']['user_results']['result']['legacy']['screen_name']
         if user == tw_user:
             try:
                 total = results['legacy']['extended_entities']['media']
