@@ -1,166 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     {% include 'meta.html' %}
     <style>
-        header,footer{
-            background: #185ADB;
-        }
+      header,
+      footer {
+        background: #185adb;
+      }
     </style>
-</head>
-<body>
-<div class="container">
-    <header>
+  </head>
+  <body>
+    <div class="container">
+      <header>
         <div class="logo">
-            <a href="/">Instafish</a>
+          <a href="/">Instafish</a>
         </div>
-        <input type="checkbox" id="click"/>
+        <input type="checkbox" id="click" />
         <label for="click" class="menu_btn">
-            <i class="fa fa-bars"></i>
+          <i class="fa fa-bars"></i>
         </label>
         {% include 'menu.html' %}
-    </header>
+      </header>
 
-    <div class="main">
+      <div class="main">
         <div class="content">
-            <h1>Instagram Reels Downloader</h1>
-            <p>Download Your Instagram Reels in High Quality</p>
-            <br/>
-            <p>Paste Your Instagram Reel Link Below</p>
-            <br/>
-            <div class="control">
-                <input
-                        type="text"
-                        id="url"
-                        placeholder="Paste Reel Link"
-                        required
-                />
+          <h1>Instagram Reels Downloader</h1>
+          <p>Download Your Instagram Reels in High Quality</p>
+          <br />
+          <p>Paste Your Instagram Reel Link Below</p>
+          <br />
+          <div class="control">
+            <input
+              type="text"
+              id="url"
+              placeholder="Paste Reel Link"
+              required
+            />
 
-                <div class="superCaptcha">
-                    <h3>Please Fill The Captcha</h3>
-                    <div class="captchaBlock">{{num}}</div>
-                    <input
-                            type="number"
-                            id="verify"
-                            placeholder="Please Fill the Captcha"
-                            required
-                    />
-                </div>
-
-                <button id="get_data" class="main-dl-btn">
-                    Download Instagram Reel
-                </button>
-                <br/>
-                <br/>
+            <div class="superCaptcha">
+              <h3>Please Fill The Captcha</h3>
+              <div class="captchaBlock">{{num}}</div>
+              <input
+                type="number"
+                id="verify"
+                placeholder="Please Fill the Captcha"
+                required
+              />
             </div>
 
-            <div class="wait">
-                <h2>Please Wait...</h2>
-            </div>
+            <button id="get_data" class="main-dl-btn">
+              Download Instagram Reel
+            </button>
+            <br />
+            <br />
+          </div>
 
-            <div class="results"></div>
+          <div class="wait">
+            <h2>Please Wait...</h2>
+          </div>
+
+          <div class="results"></div>
         </div>
-    </div>
+      </div>
 
-    <div class="guide">
+      <div class="guide">
         <h2>How to Download?</h2>
         <ol>
-            <li>
-                Open your instagram mobile app or in web browser and copy the link
-                of that reels <br/>
-                <img src="/images/reels_link.jpg"/>
-            </li>
-            <li>
-                Click on more options(three dots) at top right corner of that
-                instagram reel then you will see a copy link option.
-                <br/>
-                <img src="/images/copy_link.jpg"/><br><br>
-                or you can find the copy link in this way.
-                <br><br>
-                <img src="/images/media_link_copy.jpg" alt="">
-            </li>
-            <li>
-                Click on copy link option and paste that link on the above input
-                field and click on the download instagram reel button to download
-                instagram reels.
-            </li>
-            <li>
-                After Clicking the download button you will see your
-                required reel with its download button below of that
-                reel.
-            </li>
-            <li>
-                Click on that newly appeared download button below of that instagram
-                reel to save that instagram reel into your local device.
-            </li>
+          <li>
+            Open your instagram mobile app or in web browser and copy the link
+            of that reels <br />
+            <img src="/images/reels_link.jpg" />
+          </li>
+          <li>
+            Click on more options(three dots) at top right corner of that
+            instagram reel then you will see a copy link option.
+            <br />
+            <img src="/images/copy_link.jpg" /><br /><br />
+            or you can find the copy link in this way.
+            <br /><br />
+            <img src="/images/media_link_copy.jpg" alt="" />
+          </li>
+          <li>
+            Click on copy link option and paste that link on the above input
+            field and click on the download instagram reel button to download
+            instagram reels.
+          </li>
+          <li>
+            After Clicking the download button you will see your required reel
+            with its download button below of that reel.
+          </li>
+          <li>
+            Click on that newly appeared download button below of that instagram
+            reel to save that instagram reel into your local device.
+          </li>
         </ol>
 
         <div class="faq">
-            <h2>FAQ</h2>
-            <dl>
-                <dt>
-                    Is my privacy safe? If I download instagram reels from
-                    instafish.net
-                </dt>
-                <dd>yes, it's our first priority to safe the user's privacy.</dd>
+          <h2>FAQ</h2>
+          <dl>
+            <dt>
+              Is my privacy safe? If I download instagram reels from
+              instafish.net
+            </dt>
+            <dd>yes, it's our first priority to safe the user's privacy.</dd>
 
-                <dt>Will I have to pay for downloading instagram reels?</dt>
-                <dd>
-                    No, our tool is absolutely free and can be used any number of
-                    times with no limits.
-                </dd>
+            <dt>Will I have to pay for downloading instagram reels?</dt>
+            <dd>
+              No, our tool is absolutely free and can be used any number of
+              times with no limits.
+            </dd>
 
-                <dt>Is it legal to download instagram reels of users?</dt>
-                <dd>
-                    Yes, but not completely till it is not being used commercially. We
-                    provide reels from public accounts, which is available to
-                    everyone. We respect privacy of users that's why we do not provide
-                    any data from private accounts.
-                </dd>
+            <dt>Is it legal to download instagram reels of users?</dt>
+            <dd>
+              Yes, but not completely till it is not being used commercially. We
+              provide reels from public accounts, which is available to
+              everyone. We respect privacy of users that's why we do not provide
+              any data from private accounts.
+            </dd>
 
-                <dt>
-                    Is it possible to download instagram reels from if I am using
-                    mobile phone?
-                </dt>
-                <dd>
-                    Yes, you can download very easily on any device. Our tool is
-                    mobile responsive too. With our tool you can download instagram
-                    reels easily in android, iphone, mac, windows and linux.
-                </dd>
+            <dt>
+              Is it possible to download instagram reels from if I am using
+              mobile phone?
+            </dt>
+            <dd>
+              Yes, you can download very easily on any device. Our tool is
+              mobile responsive too. With our tool you can download instagram
+              reels easily in android, iphone, mac, windows and linux.
+            </dd>
 
-                <dt>Do you keep record of history of reels of the downloaded content?</dt>
-                <dd>No, we respect the data of users and their privacy.</dd>
-            </dl>
+            <dt>
+              Do you keep record of history of reels of the downloaded content?
+            </dt>
+            <dd>No, we respect the data of users and their privacy.</dd>
+          </dl>
         </div>
 
         <div class="about_us">
-            <h2>About Instagram Reels Downloader</h2>
-            <p>
-                Instagram Reels Downloader tool from <a href="/">instafish.net</a> is a free, secure and powerful tool
-                to download instagram reels within a second, and it's very easy. Just paste the link of instagram
-                reel and paste it to the input field of instafish.net and click on download instagram reels. Our tool
-                is mobile first responsive and compatible on every device. Our tool is very powerful and load request
-                within a second. Instafish provide bundle of tools to download your data from instagram. From instagram
-                you can download stories, highlights, videos, images, dp, reels and IGTV. From youtube you can download thumbnails of any video and its tags to boost the
-                reach of a video, also with our tool you can download images and videos from twitter too. Our tool is
-                completely free. With our tool you can watch previews before download any image or video.
-            </p>
-            <br/>
-            <p>
-                <i
-                        class="fa fa-hand-point-right"
-                        style="color: red; font-size: 24px"
-                ></i>
-                We do not host any of the instagram reels on our server, all rights
-                belong to their respective owners
-            </p>
+          <h2>About Instagram Reels Downloader</h2>
+          <p>
+            Instagram Reels Downloader tool from
+            <a href="/">instafish.net</a> is a free, secure and powerful tool to
+            download instagram reels within a second, and it's very easy. Just
+            paste the link of instagram reel and paste it to the input field of
+            instafish.net and click on download instagram reels. Our tool is
+            mobile first responsive and compatible on every device. Our tool is
+            very powerful and load request within a second. Instafish provide
+            bundle of tools to download your data from instagram. From instagram
+            you can download stories, highlights, videos, images, dp, reels and
+            IGTV. From youtube you can download thumbnails of any video and its
+            tags to boost the reach of a video, also with our tool you can
+            download images and videos from twitter too. Our tool is completely
+            free. With our tool you can watch previews before download any image
+            or video.
+          </p>
+          <br />
+          <p>
+            <i
+              class="fa fa-hand-point-right"
+              style="color: red; font-size: 24px"
+            ></i>
+            We do not host any of the instagram reels on our server, all rights
+            belong to their respective owners
+          </p>
         </div>
-    </div>
+      </div>
 
-    {% include 'footer.html' %}
-</div>
-<script src="jquery.min.js"></script>
-<script src="igfish.js"></script>
-<script src="media_dl.js"></script>
-</body>
+      {% include 'footer.html' %}
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="igfish.js"></script>
+    <script src="media_dl.js"></script>
+  </body>
 </html>

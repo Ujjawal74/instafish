@@ -62,14 +62,16 @@ def media(url: str) -> dict:
                     if 'video_versions' in item:
                         links.append(item['video_versions'][0]['url'])
                     else:
-                        links.append(item['image_versions2']['candidates'][0]['url'])
+                        links.append(item['image_versions2']
+                                     ['candidates'][0]['url'])
 
             else:
                 if 'video_versions' in result:
                     links.append(result['video_versions'][0]['url'])
 
                 else:
-                    links.append(result['image_versions2']['candidates'][0]['url'])
+                    links.append(result['image_versions2']
+                                 ['candidates'][0]['url'])
 
             preview = []
             for link in links:
@@ -150,12 +152,14 @@ def story(url: str) -> dict:
 def highlights(url: str) -> dict:
     try:
         try:
-            match = re.search(pattern=r'stories\/highlights\/([^\/]+)', string=url)
+            match = re.search(
+                pattern=r'stories\/highlights\/([^\/]+)', string=url)
             hg_id = int(match.group(1))
         except Exception as e:
             error_log(f'trying,{e},{url}')
             original_url = requests.get(url=url, headers=headers).url
-            match = re.search(pattern=r'stories\/highlights\/([^\/]+)', string=original_url)
+            match = re.search(
+                pattern=r'stories\/highlights\/([^\/]+)', string=original_url)
             hg_id = int(match.group(1))
         finally:
             hglink = f'https://i.instagram.com/api/v1/feed/reels_media/?reel_ids=highlight%3A{hg_id}'
