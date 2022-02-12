@@ -97,7 +97,7 @@ $(function () {
     if (c_num === s_num) {
       $(".results").html("");
       $(".wait").css("display", "block");
-      $(".wait").html("<img src='image.gif' alt='wait' />");
+      $(".wait").html("<h1>Please Wait...</h1><img src='image.gif' alt='wait' />");
       try {
         if (is_error) {
           $(".wait").css("display", "none");
