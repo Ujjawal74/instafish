@@ -201,9 +201,13 @@ def profile(url: str) -> dict:
     try:
         patt = r'https\:\/\/.*instagram\.com\/([^\/\?]+)'
         match = re.search(pattern=patt, string=url)
-        find = match.group(0)
-        profile_link = f'{find}/?__a=1'
-        data = requests.get(url=profile_link, headers=headers)
+        find = match.group(1)
+        params = f'?__a=1&__d=dis'
+        profile_link = f'https://www.instagram.com/{find}/'
+        target_url = f'{profile_link}{params}'
+        data = requests.get(
+            url=target_url, headers=master_header(profile_link))
+
         result = data.json()['graphql']['user']
     except Exception as e:
         error_log(f'fully_failed,{e},{url}')

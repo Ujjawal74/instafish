@@ -1,4 +1,4 @@
-from datetime import  datetime
+from datetime import datetime
 headers = {
     "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Mobile Safari/537.36",
     "Content-Type": "application/json; charset=utf-8",
@@ -7,6 +7,28 @@ headers = {
     "x-ig-app-id": "936619743392459",
     "x-ig-www-claim": "hmac.AR1Y4zoDpEVl6cYBqP5O18md_sXGiiXDD9cc3LvPmR3Uv0iu"
 }
+
+
+def master_header(url):
+    headers = {
+        'authority': 'www.instagram.com',
+        'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="98", "Google Chrome";v="98"',
+        'x-ig-www-claim': 'hmac.AR1Y4zoDpEVl6cYBqP5O18md_sXGiiXDD9cc3LvPmR3Uv7Fc',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36',
+        'accept': '*/*',
+        'x-requested-with': 'XMLHttpRequest',
+        'x-asbd-id': '198387',
+        'sec-ch-ua-platform': '"Linux"',
+        'x-ig-app-id': '936619743392459',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        'referer': f'{url}',
+        'accept-language': 'en-US,en;q=0.9,fr;q=0.8,pa;q=0.7,da;q=0.6',
+        'cookie': 'mid=YfEWcAAEAAE_rPPHGv5claxuj6bk; ig_did=D26E3CD3-70F8-465C-B5A5-144DCA08B3CE; ig_nrcb=1; csrftoken=sXKY1bbs3e6y81XYwfbX1k72PB20KY8D; ds_user_id=4207735234; sessionid=4207735234%3AzJOgR1ZAtfg9Rw%3A11; shbid="12866\\0544207735234\\0541676017381:01f766bee3e64471d87118ddf1bfecf0ac65c36ab17c1a39593a376f002d87bf2f4f8699"; shbts="1644481381\\0544207735234\\0541676017381:01f7144e431c1d0cf526a1c728adfc6137b5457ec7e5b87f39feb23dbe46a4128d6612b6"; rur="EAG\\0544207735234\\0541676185143:01f7ecf390a91a5612cafae633e3f1591d7e20da275bf4ec973e610ae18df58f2522bae0"',
+    }
+    return headers
 
 
 def yt_headers(video_id):
