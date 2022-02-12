@@ -63,7 +63,7 @@ tw_headers = {
 
 
 def error_log(error: str):
-    with open('static/errors6291663217.logs', mode='a') as file:
+    with open('static/instafish_errors.logs', mode='a') as file:
         file.write(f'\n{error},{datetime.today()}')
     return 'Logged Error!'
 
