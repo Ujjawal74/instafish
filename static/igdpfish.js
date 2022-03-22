@@ -24,7 +24,7 @@ $(function () {
     })
       .then((res) => res.json())
       .then((data) => {
-        const { links, preview, error } = data;
+        const { preview, error } = data;
 
         try {
           if (!error) {
@@ -34,7 +34,7 @@ $(function () {
           console.log("No Media Found!");
         }
 
-        let { profile_url, full_name, biography } = links;
+        let { profile_url, full_name, biography } = preview;
         try {
           if (error) {
             is_error = error;
@@ -46,10 +46,10 @@ $(function () {
 
         full_name = `${full_name}`;
         biography = biography.replace(/\n/g, "<br>");
-        raw_html += `<div class='media'><img style='border-radius:50%;' src='${preview}' alt='media' /></div>`;
+        raw_html += `<div class='media'><img style='border-radius:50%;' src='${profile_url}' alt='media' /></div>`;
         raw_html += `<h2>${full_name}</h2>`;
         raw_html += `<p>${biography}</p>`;
-        raw_html += `<br><a href='javascript:void(0)' class="dl-media" data-ql="${preview}" style='border-radius:5px;'>Download DP</a>`;
+        raw_html += `<br><a href='javascript:void(0)' class="dl-media" data-ql="${profile_url}" style='border-radius:5px;'>Download DP</a>`;
       });
   });
 
@@ -94,7 +94,9 @@ $(function () {
     if (c_num === s_num) {
       $(".results").html("");
       $(".wait").css("display", "block");
-      $(".wait").html("<h1>Please Wait ...</h1><img src='image.gif' alt='wait' />");
+      $(".wait").html(
+        "<h1>Please Wait ...</h1><img src='image.gif' alt='wait' />"
+      );
       try {
         if (is_error) {
           $(".wait").css("display", "none");

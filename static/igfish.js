@@ -22,7 +22,7 @@ $(function () {
     })
       .then((res) => res.json())
       .then((data) => {
-        const { links, preview, error } = data;
+        const { preview, error } = data;
 
         try {
           if (!error) {
@@ -93,7 +93,9 @@ $(function () {
     if (c_num === s_num) {
       $(".results").html("");
       $(".wait").css("display", "block");
-      $(".wait").html("<h1>Please Wait...</h1><img src='image.gif' alt='wait' />");
+      $(".wait").html(
+        "<h1>Please Wait...</h1><img src='image.gif' alt='wait' />"
+      );
 
       try {
         if (is_error) {

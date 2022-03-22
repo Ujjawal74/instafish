@@ -28,7 +28,6 @@ def logs():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        print(request.origin)
         if request.origin == HOST:
             url = request.get_json()['url']
             verify = re.search(pattern=r'instagram\.com.+', string=url)

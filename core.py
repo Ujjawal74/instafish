@@ -1,6 +1,8 @@
+import json
 import requests
 import re
 from config import *
+THUMBNAIL_URL = 'https://getcdnlink.xyz/api/getcdn'
 
 
 def media(url: str) -> dict:
@@ -39,19 +41,13 @@ def media(url: str) -> dict:
                     else:
                         links.append(result['display_url'])
 
-                preview = []
-                for link in links:
-                    try:
-                        url = requests.get(
-                            url=f'https://getcdnlink.xyz/api/getcdn?url={link}')
-                        pre_link = url.json()['pre_url']
-                    except Exception as e:
-                        error_log(f'cdn_failed,{e},{url}')
-                        preview.append('No Preview Found')
-                    else:
-                        preview.append(pre_link)
+                try:
+                    preview = requests.post(
+                        url=THUMBNAIL_URL, data={'links': links}).json()
+                except Exception as e:
+                    error_log(f'cdn_failed, {e}, {url}')
+
                 return ({
-                    'links': links,
                     'preview': preview
                 })
         else:
@@ -73,19 +69,13 @@ def media(url: str) -> dict:
                     links.append(result['image_versions2']
                                  ['candidates'][0]['url'])
 
-            preview = []
-            for link in links:
-                try:
-                    url = requests.get(
-                        url=f'https://getcdnlink.xyz/api/getcdn?url={link}')
-                    pre_link = url.json()['pre_url']
-                except Exception as e:
-                    error_log(f'cdn_failed,{e},{url}')
-                    preview.append('No Preview Found')
-                else:
-                    preview.append(pre_link)
+            try:
+                preview = requests.post(
+                    url=THUMBNAIL_URL, json={'links': links}).json()
+            except Exception as e:
+                error_log(f'cdn_failed, {e}, {url}')
+
             return ({
-                'links': links,
                 'preview': preview
             })
 
@@ -130,18 +120,11 @@ def story(url: str) -> dict:
                     tray.append(link['image_versions2']
                                 ['candidates'][0]['url'])
 
-            preview = []
-
-            for link in tray:
-                try:
-                    url = requests.get(
-                        url=f'https://getcdnlink.xyz/api/getcdn?url={link}')
-                    pre_link = url.json()['pre_url']
-                except Exception as e:
-                    error_log(f'cdn_failed,{e},{url}')
-                    preview.append('No Preview Found!')
-                else:
-                    preview.append(pre_link)
+            try:
+                preview = requests.post(url=THUMBNAIL_URL, json={
+                                        'links': tray}).json()
+            except Exception as e:
+                error_log(f'cdn_failed, {e}, {url}')
 
             return ({
                 'links': tray,
@@ -180,19 +163,13 @@ def highlights(url: str) -> dict:
             else:
                 tray.append(item['image_versions2']['candidates'][0]['url'])
 
-        preview = []
-        for link in tray:
-            try:
-                url = requests.get(
-                    url=f'https://getcdnlink.xyz/api/getcdn?url={link}')
-                pre_link = url.json()['pre_url']
-            except Exception as e:
-                error_log(f'cdn_failed,{e},{url}')
-                preview.append('No Preview Found')
-            else:
-                preview.append(pre_link)
+        try:
+            preview = requests.post(url=THUMBNAIL_URL, json={
+                                    'links': tray}).json()
+        except Exception as e:
+            error_log(f'cdn_failed, {e}, {url}')
+
         return ({
-            'links': tray,
             'preview': preview
         })
 
@@ -221,17 +198,17 @@ def profile(url: str) -> dict:
             'profile_url': result['profile_pic_url_hd']
         }
 
-        link = tray['profile_url']
+        link = [tray['profile_url']]
         try:
-            preview_url = requests.get(
-                url=f'https://getcdnlink.xyz/api/getcdn?url={link}').json()['pre_url']
+            preview_url = requests.post(
+                url=THUMBNAIL_URL, json={'links': link}).json()[0]
         except Exception as e:
-            error_log(f'trying,{e},{url}')
-            preview_url = 'No Media Found'
+            error_log(f'cdn_failed, {e}, {url}')
+
+        tray['profile_url'] = preview_url
 
         return ({
-            'links': tray,
-            'preview': preview_url
+            'preview': tray
         })
 
 
@@ -242,20 +219,17 @@ def yt_thumbnail(yt_id: str) -> dict:
                        'hqdefault', 'mqdefault', 'default']
         actual_resolutions = ['Full HD', 'HD', 'Medium', 'SD', 'Low']
 
-        for item in resolutions:
-            try:
-                pre_url = f'https://i.ytimg.com/vi/{yt_id}/{item}.jpg'
-                cdn_url = requests.get(
-                    url=f'https://getcdnlink.xyz/api/getcdn?url={pre_url}').json()['pre_url']
+        pre_url = [
+            f'https://i.ytimg.com/vi/{yt_id}/{item}.jpg' for item in resolutions]
 
-                preview.append(cdn_url)
-            except Exception as e:
-                error_log(f'cdn_failed,{e},{yt_id}')
-                cdn_url = 'No Media Found!'
-                preview.append(cdn_url)
+        try:
+            thumbnails = requests.post(url=THUMBNAIL_URL, json={
+                                       'links': pre_url}).json()
+        except Exception as e:
+            error_log(f'cdn_failed,{e},{yt_id}')
 
         return ({
-            'preview': preview,
+            'preview': thumbnails,
             'resolutions': actual_resolutions
         })
 
