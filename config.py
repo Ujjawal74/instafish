@@ -1,11 +1,10 @@
 from datetime import datetime
 headers = {
-    "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Mobile Safari/537.36",
-    "Content-Type": "application/json; charset=utf-8",
-    "Cookie": "ig_did=C0CB90DA-0D57-468D-8576-EA8E3AD6B8F4; mid=YDdfOgAEAAFOWcvoQ8tYZwzA7dt3; ig_nrcb=1; sessionid=4207735234%3A9IWlwhYdBMVB9u%3A25; shbid=12866; shbts=1614415803.8560727; csrftoken=z70fSa0ofO84aDh2ZK449sChUJQmsNil; rur=RVA; ds_user_id=4207735234",
-    "x-asbd-id": "198387",
-    "x-ig-app-id": "936619743392459",
-    "x-ig-www-claim": "hmac.AR1Y4zoDpEVl6cYBqP5O18md_sXGiiXDD9cc3LvPmR3Uv0iu"
+    'cookie': 'mid=YnIbfAAEAAE_ewOflnCETQ7t5VDQ; ig_did=3513514D-4CCC-4B1C-A820-3F78EE4AF6EF; ig_nrcb=1; csrftoken=g57POisSEKj8F31kLIj1Uwmbh2cke5xG; ds_user_id=4207735234; sessionid=4207735234%3APv2EL2I4D0mb6f%3A20; datr=RN6mYlqR-qMV6SsK3bGL_Z9W; dpr=1.5; shbid="12866\0544207735234\0541687322901:01f714045e15465f530f5c27d43d147cd8eb3c7a49497c70b1c1e50c4111bea330384565"; shbts="1655786901\0544207735234\0541687322901:01f7ef000767ceb6cd5ceb84c058487df08b1ca1501fdd146733bd6887414274fe943c02"; rur="EAG\0544207735234\0541687323763:01f7ee07e76ef02504bf77a1324d1d36741628b1dea341ae54d52fcef27de6b4394e8d05"',
+    'x-asbd-id': '198387',
+    'x-csrftoken': 'g57POisSEKj8F31kLIj1Uwmbh2cke5xG',
+    'x-ig-app-id': '936619743392459',
+    'x-ig-www-claim': 'hmac.AR1Y4zoDpEVl6cYBqP5O18md_sXGiiXDD9cc3LvPmR3Uv5Z2'
 }
 
 

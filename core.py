@@ -1,9 +1,7 @@
-import json
 import requests
 import re
 from config import *
 THUMBNAIL_URL = 'https://getcdnlink.xyz/api/getcdn'
-
 
 def media(url: str) -> dict:
     try:
@@ -43,7 +41,8 @@ def media(url: str) -> dict:
 
                 try:
                     preview = requests.post(
-                        url=THUMBNAIL_URL, data={'links': links}).json()
+                        url=THUMBNAIL_URL, headers={"Content-Type": "application/json"}, json={'links': links}).json()
+
                 except Exception as e:
                     error_log(f'cdn_failed, {e}, {url}')
 
@@ -71,7 +70,7 @@ def media(url: str) -> dict:
 
             try:
                 preview = requests.post(
-                    url=THUMBNAIL_URL, json={'links': links}).json()
+                    url=THUMBNAIL_URL, headers={"Content-Type": "application/json"}, json={'links': links}).json()
             except Exception as e:
                 error_log(f'cdn_failed, {e}, {url}')
 
@@ -90,10 +89,10 @@ def story(url: str) -> dict:
     try:
         match = re.search(r'stories\/([^\/]+)', url)
         username = match.group(1)
-        id_url = f'https://www.instagram.com/{username}/?__a=1'
+        id_url = f'https://i.instagram.com/api/v1/users/web_profile_info/?username={username}'
         data = requests.get(url=id_url, headers=headers)
         fetch = data.json()
-        user_id = fetch['graphql']['user']['id']
+        user_id = fetch['data']['user']['id']
     except Exception as e:
         error_log(f'fully_failed,{e},{url}')
         return ({
@@ -121,7 +120,7 @@ def story(url: str) -> dict:
                                 ['candidates'][0]['url'])
 
             try:
-                preview = requests.post(url=THUMBNAIL_URL, json={
+                preview = requests.post(url=THUMBNAIL_URL, headers={"Content-Type": "application/json"}, json={
                                         'links': tray}).json()
             except Exception as e:
                 error_log(f'cdn_failed, {e}, {url}')
@@ -164,7 +163,7 @@ def highlights(url: str) -> dict:
                 tray.append(item['image_versions2']['candidates'][0]['url'])
 
         try:
-            preview = requests.post(url=THUMBNAIL_URL, json={
+            preview = requests.post(url=THUMBNAIL_URL, headers={"Content-Type": "application/json"}, json={
                                     'links': tray}).json()
         except Exception as e:
             error_log(f'cdn_failed, {e}, {url}')
@@ -201,7 +200,7 @@ def profile(url: str) -> dict:
         link = [tray['profile_url']]
         try:
             preview_url = requests.post(
-                url=THUMBNAIL_URL, json={'links': link}).json()[0]
+                url=THUMBNAIL_URL, headers={"Content-Type": "application/json"}, json={'links': link}).json()[0]
         except Exception as e:
             error_log(f'cdn_failed, {e}, {url}')
 
@@ -223,7 +222,7 @@ def yt_thumbnail(yt_id: str) -> dict:
             f'https://i.ytimg.com/vi/{yt_id}/{item}.jpg' for item in resolutions]
 
         try:
-            thumbnails = requests.post(url=THUMBNAIL_URL, json={
+            thumbnails = requests.post(url=THUMBNAIL_URL, headers={"Content-Type": "application/json"}, json={
                                        'links': pre_url}).json()
         except Exception as e:
             error_log(f'cdn_failed,{e},{yt_id}')
